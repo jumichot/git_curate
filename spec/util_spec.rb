@@ -21,6 +21,15 @@ describe GitCurate::Util do
       end
     end
 
+    context "when passed a system command that has an output with invalid characters" do
+      let(:output) { "feat/test-\xC3" }
+      let(:err_output) { "" }
+
+      it "returns a one-element array containing that line, replacing invalid characters" do
+        is_expected.to eq(["feat/test-�"])
+      end
+    end
+
     context "when passed a system command that returns one line of output" do
       let(:output) { "  \t  hi   " }
       let(:err_output) { "" }
