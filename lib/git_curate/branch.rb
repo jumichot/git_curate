@@ -21,7 +21,7 @@ module GitCurate
 
     # Returns simply the name of the branch, without any other "decoration".
     def proper_name
-      @proper_name ||= @raw_name.lstrip.sub(CURRENT_BRANCH_REGEX, '')
+      @proper_name ||= "'#{@raw_name.lstrip.sub(CURRENT_BRANCH_REGEX, '')}'"
     end
 
     # Returns truthy if and only if this is the currently checked out branch on the current
